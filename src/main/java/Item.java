@@ -1,5 +1,8 @@
 public class Item {
     private String name;
+
+    public int getPrice(){ return price;}
+
     private int price;
 
     public Item(String name, int price) {

@@ -3,6 +3,8 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.util.Objects.nonNull;
+
 public class Restaurant {
     private  final String name;
     private  final String location;
@@ -53,6 +55,17 @@ public class Restaurant {
 
         menu.remove(itemToBeRemoved);
     }
+    public int getTotalOrderCost(List<String> itemsList){
+        int addedCost = 0;
+        for(String item : itemsList){
+            Item foundItem = findItemByName(item);
+            if(nonNull(foundItem) && (foundItem.getPrice() > 0)){
+                addedCost += foundItem.getPrice();
+            }
+        }
+        return addedCost;
+    }
+
     public void displayDetails(){
         System.out.println("Restaurant:"+ name + "\n"
                 +"Location:"+ location + "\n"
